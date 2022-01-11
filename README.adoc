@@ -13,7 +13,7 @@ endif::[]
 :ESPHome: https://esphome.io[ESPHome]
 :Git: https://git-scm.com/[Git]
 
-image:https://img.shields.io/github/workflow/status/jwillikers/esphome-static-network/CI/main[GitHub Workflow Status]
+image:https://img.shields.io/github/workflow/status/jwillikers/esphome-config/CI/main[GitHub Workflow Status]
 image:https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white[pre-commit, link=https://github.com/pre-commit/pre-commit]
 
 My {ESPHome} configuration for all my ESPHome devices.

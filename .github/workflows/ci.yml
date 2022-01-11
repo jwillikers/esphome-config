@@ -14,13 +14,28 @@ jobs:
       - name: yaml-lint
         uses: ibiqlik/action-yamllint@v3
 
-# test:
-#   name: Test
-#   runs-on: ubuntu-latest
-#   needs: lint
-#   steps:
-#     - uses: actions/checkout@v2
-#     - uses: esphome/build-action@v1
-#       id: esphome-build
-#       with:
-#         yaml_file: example_node.yaml
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    needs: lint
+    strategy:
+      matrix:
+        node:
+          - cloudfree_smart_plug_v2_1
+          - cloudfree_smart_plug_v2_2
+          - environment_sensor
+          - funhouse
+          - humidity_sensor
+          - pressure_sensor
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          touch esphome/secrets.yaml
+          echo 'wifi_ssid: "Test WiFi SSID"' >> esphome/secrets.yaml
+          echo 'wifi_password: "Test WiFi Password"' >> esphome/secrets.yaml
+          echo 'wifi_ap_password: "Test Fallback Hotspot Password"' >> esphome/secrets.yaml
+          echo 'ota_password: "Test OTA Update Password"' >> esphome/secrets.yaml
+      - uses: esphome/build-action@v1
+        id: esphome-build
+        with:
+          yaml_file: esphome/${{ matrix.node }}.yaml
