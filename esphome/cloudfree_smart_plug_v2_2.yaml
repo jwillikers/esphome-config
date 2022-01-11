@@ -2,7 +2,7 @@ substitutions:
   node_name: cloudfree-smart-plug-v2-2
   node_description: Smart outlet used to control and monitor the Guest Bedroom lamp
   friendly_name: Guest Bedroom Lamp
-  ip_address: 192.168.1.71
+  static_ip: 192.168.1.71
 
 packages:
   aoycocr-x10s: !include common/aoycocr_x10s.yaml
