@@ -1,0 +1,35 @@
+substitutions:
+  node_name: cloudfree-smart-plug-v2-2
+  node_description: Smart outlet used to control and monitor the Guest Bedroom lamp
+  friendly_name: Guest Bedroom Lamp
+  ip_address: 192.168.1.71
+
+packages:
+  aoycocr-x10s: !include common/aoycocr_x10s.yaml
+  static-network: !include common/static_network.yaml
+
+esphome:
+  name: ${node_name}
+  comment: ${node_description}
+# on_boot:
+#   - lambda: |-
+#       id(my_ota).set_auth_password("2f445125b4fd0438cc62be4e8bd577e5");
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "${node_name} Fallback Hotspot"
+    password: !secret wifi_ap_password
+
+captive_portal:
+
+# Enable Home Assistant API
+api:
+
+# Enable OTA updates
+ota:
+# id: my_ota
+# password: !secret ota_password

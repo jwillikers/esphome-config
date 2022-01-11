@@ -1,0 +1,46 @@
+substitutions:
+  node_name: humidity-sensor
+  static_ip: 192.168.1.52
+
+packages:
+  static-network: !include common/static_network.yaml
+
+esphome:
+  name: ${node_name}
+
+esp32:
+  board: nodemcu-32s
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+  password: !secret ota_password
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "${node_name} Fallback Hotspot"
+    password: !secret wifi_ap_password
+
+captive_portal:
+
+status_led:
+  pin: LED
+
+i2c:
+
+sensor:
+  - platform: sht4x
+    temperature:
+      name: "Temperature"
+    humidity:
+      name: "Relative Humidity"
