@@ -9,9 +9,11 @@ logger:
 
 # Enable Home Assistant API
 api:
+  encryption:
+    key: !secret cloudfree_smart_bulb_api_encryption_key
 
 ota:
-  password: !secret ota_password
+  password: !secret cloudfree_smart_bulb_ota_password
 
 wifi:
   ssid: !secret wifi_ssid
@@ -20,7 +22,7 @@ wifi:
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: "${node_name} Fallback Hotspot"
-    password: !secret wifi_ap_password
+    password: !secret cloudfree_smart_bulb_wifi_ap_password
 
 captive_portal:
 
@@ -28,7 +30,7 @@ light:
   - platform: rgbct
     name: "Living Room Lamp"
     red: output_component1
-    green: ouptut_component2
+    green: output_component2
     blue: output_component3
     color_temperature: output_component4
     white_brightness: output_component5

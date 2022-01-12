@@ -1,6 +1,5 @@
 substitutions:
   node_name: environment-sensor
-  node_short_name: Env Sensor
   static_ip: 192.168.1.53
 
 packages:
@@ -27,9 +26,11 @@ logger:
 
 # Enable Home Assistant API
 api:
+  encryption:
+    key: !secret environment_sensor_api_encryption_key
 
 ota:
-  password: !secret ota_password
+  password: !secret environment_sensor_ota_password
 
 wifi:
   ssid: !secret wifi_ssid
@@ -37,8 +38,8 @@ wifi:
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: "${node_short_name} Fallback Hotspot"
-    password: !secret wifi_ap_password
+    ssid: "Env Sensor Fallback Hotspot"
+    password: !secret environment_sensor_wifi_ap_password
 
 # captive_portal:
 
