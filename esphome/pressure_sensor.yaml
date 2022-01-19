@@ -52,7 +52,7 @@ light:
 i2c:
 
 sensor:
-  - platform: bmp280
+  - platform: bmp3xx
     temperature:
       name: "Temperature"
       oversampling: 16x
