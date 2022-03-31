@@ -1,17 +1,21 @@
 substitutions:
   node_name: humidity-sensor
-  static_ip: 192.168.1.52
+  static_ip: 192.168.1.55
 
 packages:
   static-network: !include common/static_network.yaml
 
 esphome:
   name: ${node_name}
+  platformio_options:
+    board_build.mcu: esp32c3
+    board_build.variant: esp32c3
 
 esp32:
-  board: nodemcu-32s
+  board: esp32dev
+  variant: esp32c3
   framework:
-    type: arduino
+    type: esp-idf
 
 # Enable logging
 logger:
@@ -33,12 +37,11 @@ wifi:
     ssid: "${node_name} Fallback Hotspot"
     password: !secret humidity_sensor_wifi_ap_password
 
-captive_portal:
-
-status_led:
-  pin: LED
+# captive_portal:
 
 i2c:
+  sda: GPIO5
+  scl: GPIO6
 
 sensor:
   - platform: sht4x
