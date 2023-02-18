@@ -2,7 +2,7 @@ substitutions:
   node_name: cloudfree-smart-plug-v2-2
   node_description: Smart outlet used to control and monitor the Guest Room lamp
   friendly_name: Guest Room Lamp
-  static_ip: 10.1.0.71
+  static_ip: 10.7.0.71
 
 packages:
   aoycocr-x10s: !include common/aoycocr_x10s.yaml

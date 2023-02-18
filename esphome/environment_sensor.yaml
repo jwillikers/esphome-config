@@ -1,6 +1,6 @@
 substitutions:
   node_name: environment-sensor
-  static_ip: 10.1.0.53
+  static_ip: 10.7.0.53
 
 packages:
   static-network: !include common/static_network.yaml

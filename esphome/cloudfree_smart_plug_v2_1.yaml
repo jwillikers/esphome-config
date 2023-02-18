@@ -2,7 +2,7 @@ substitutions:
   node_name: cloudfree-smart-plug-v2-1
   node_description: Smart outlet used to control and monitor the Christmas tree lights
   friendly_name: Christmas Tree
-  static_ip: 10.1.0.70
+  static_ip: 10.7.0.70
 
 packages:
   aoycocr-x10s: !include common/aoycocr_x10s.yaml
