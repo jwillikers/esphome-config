@@ -44,7 +44,7 @@ wifi_password: "My Password"
 cloudfree_smart_plug_v2_1_wifi_ap_password: "Ce7Ro2q98asxBUaJbQMb5vszyWGCDoXJ"
 cloudfree_smart_plug_v2_2_wifi_ap_password: "QZN43ju2dCj8xPcx4ZQspUgShUxH5r5v"
 environment_sensor_wifi_ap_password: "zf4o9r2JheMf8o3FQ5NbC3WtQCDc3fCn"
-funhouse_wifi_ap_password: ZJfjc4bvKefxxBbh8cfcknCNB9SBrf3S"
+funhouse_wifi_ap_password: "ZJfjc4bvKefxxBbh8cfcknCNB9SBrf3S"
 humidity_sensor_wifi_ap_password: "uBQ5gh8bR2NJ9wGX9zRsGon8A8GvX3tx"
 pressure_sensor_wifi_ap_password: "zr3hXkcvCjMAJZhqzp9u7bgJqtB4nbWT"
 
