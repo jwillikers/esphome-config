@@ -29,7 +29,7 @@ git clone git@github.com:jwillikers/esphome-config.git
 
 . Copy the `secrets.yaml.template` template to `secrets.yaml` in the ESPHome configuration directory.
 
-Add your WiFi SSID and password to the `secrets.yaml` file.
+. Add your WiFi SSID and password to the `secrets.yaml` file.
 In addition to these, each device should have it's own password for OTA updates and the fallback WiFi hotspot.
 Each device also requires a pre-shared encryption key for communicating securely with the Home Assistant API.
 See the https://esphome.io/components/api.html#configuration-variables[Native API - for each device Configuration Variables] section of the ESPHome documentation for details.
