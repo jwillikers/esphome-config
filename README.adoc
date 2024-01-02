@@ -27,42 +27,17 @@ My {ESPHome} configuration for all my ESPHome devices.
 git clone git@github.com:jwillikers/esphome-config.git
 ----
 
-. Create a `secrets.yaml` file in your ESPHome configuration directory with your WiFi SSID and password.
+. Copy the `secrets.yaml.template` template to `secrets.yaml` in the ESPHome configuration directory.
+
+Add your WiFi SSID and password to the `secrets.yaml` file.
 In addition to these, each device should have it's own password for OTA updates and the fallback WiFi hotspot.
 Each device also requires a pre-shared encryption key for communicating securely with the Home Assistant API.
 See the https://esphome.io/components/api.html#configuration-variables[Native API - for each device Configuration Variables] section of the ESPHome documentation for details.
 Home Assistant will prompt you for the device's key once the device has been updated.
 +
-.~/.local/share/containers/storage/volumes/esphome-config/_data/secrets.yaml
-[source,yaml]
+[,sh]
 ----
-# WiFi SSID and password
-wifi_ssid: "My Access Point"
-wifi_password: "My Password"
-
-# Fallback WiFi Hotspot AP passwords
-cloudfree_smart_plug_v2_1_wifi_ap_password: "Ce7Ro2q98asxBUaJbQMb5vszyWGCDoXJ"
-cloudfree_smart_plug_v2_2_wifi_ap_password: "QZN43ju2dCj8xPcx4ZQspUgShUxH5r5v"
-environment_sensor_wifi_ap_password: "zf4o9r2JheMf8o3FQ5NbC3WtQCDc3fCn"
-funhouse_wifi_ap_password: "ZJfjc4bvKefxxBbh8cfcknCNB9SBrf3S"
-humidity_sensor_wifi_ap_password: "uBQ5gh8bR2NJ9wGX9zRsGon8A8GvX3tx"
-pressure_sensor_wifi_ap_password: "zr3hXkcvCjMAJZhqzp9u7bgJqtB4nbWT"
-
-# Over-The-Air update passwords
-cloudfree_smart_plug_v2_1_ota_password: "E4kRh6Yuf4nt4L6Uh9j4QjSGCL445gLv"
-cloudfree_smart_plug_v2_2_ota_password: "gNJyLJY3fSf8hBvqyZWCSKWPoQQjsfv5"
-environment_sensor_ota_password: "UcuSfsMkJLjS862JYQNWiWi4GdEkj4rp"
-funhouse_ota_password: "njnzzVTU9MePQPQ3xoyjs3RZnaJuVaX4"
-humidity_sensor_ota_password: "njnzzVTU9MePQPQ3xoyjs3RZnaJuVaX4"
-pressure_sensor_ota_password: "3hfedXC8MzQwvandTo7ToJ82H8MRyBG5"
-
-# Pre-shared Home Assistant API encryption keys
-cloudfree_smart_plug_v2_1_api_encryption_key: "NKnCdo4g9aBF30g1S1e7Gkcm0d+3OK7zik/Ni2VPFyk="
-cloudfree_smart_plug_v2_2_api_encryption_key: "wVBxAjQUPseCDpJ02yWEx0It+mik1YLOR2juooJ9520="
-environment_sensor_api_encryption_key: "Ekp5fU6okwQ3a6quNSWYTQY1u3azE11vd3r0rTrj6s0="
-funhouse_api_encryption_key: "E7EH9iIVNpRMaYF6VpZ4RjcqnQuECAacDPROQrKevyU="
-humidity_sensor_api_encryption_key: "x6KOGUkwi1R8raTu8dtPAawdK+rOxlIMQOZG1PO9OFE="
-pressure_sensor_api_encryption_key: "itzs4DA2XGkjAY0Dejiue5igdqOSg7k+aUs4Xsr6M1s="
+cp esphome/secrets.yaml.template esphome/secrets.yaml
 ----
 
 . Copy the contents of the `esphome` directory to your ESPHome configuration directory.
