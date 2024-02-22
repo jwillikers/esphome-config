@@ -25,36 +25,16 @@ jobs:
           - amd64
         # - arm64
         node:
-          - cloudfree_smart_plug_v2_1
-          - cloudfree_smart_plug_v2_2
-          - environment_sensor
-          - funhouse
-          - humidity_sensor
-          - pressure_sensor
+          - esp32-s3-box-3-01
     steps:
       - uses: actions/checkout@v2
       - run: |
           touch esphome/secrets.yaml
           echo 'wifi_ssid: "Test WiFi SSID"' >> esphome/secrets.yaml
           echo 'wifi_password: "Test WiFi Password"' >> esphome/secrets.yaml
-          printf 'cloudfree_smart_plug_v2_1_wifi_ap_password: "%s"\n' "$(tr -dc A-Za-z0-9 </dev/urandom | head -c 32 ; echo '')" >> esphome/secrets.yaml
-          printf 'cloudfree_smart_plug_v2_2_wifi_ap_password: "%s"\n' "$(tr -dc A-Za-z0-9 </dev/urandom | head -c 32 ; echo '')" >> esphome/secrets.yaml
-          printf 'environment_sensor_wifi_ap_password: "%s"\n' "$(tr -dc A-Za-z0-9 </dev/urandom | head -c 32 ; echo '')" >> esphome/secrets.yaml
-          printf 'funhouse_wifi_ap_password: "%s"\n' "$(tr -dc A-Za-z0-9 </dev/urandom | head -c 32 ; echo '')" >> esphome/secrets.yaml
-          printf 'humidity_sensor_wifi_ap_password: "%s"\n' "$(tr -dc A-Za-z0-9 </dev/urandom | head -c 32 ; echo '')" >> esphome/secrets.yaml
-          printf 'pressure_sensor_wifi_ap_password: "%s"\n' "$(tr -dc A-Za-z0-9 </dev/urandom | head -c 32 ; echo '')" >> esphome/secrets.yaml
-          printf 'cloudfree_smart_plug_v2_1_ota_password: "%s"\n' "$(tr -dc A-Za-z0-9 </dev/urandom | head -c 32 ; echo '')" >> esphome/secrets.yaml
-          printf 'cloudfree_smart_plug_v2_2_ota_password: "%s"\n' "$(tr -dc A-Za-z0-9 </dev/urandom | head -c 32 ; echo '')" >> esphome/secrets.yaml
-          printf 'environment_sensor_ota_password: "%s"\n' "$(tr -dc A-Za-z0-9 </dev/urandom | head -c 32 ; echo '')" >> esphome/secrets.yaml
-          printf 'funhouse_ota_password: "%s"\n' "$(tr -dc A-Za-z0-9 </dev/urandom | head -c 32 ; echo '')" >> esphome/secrets.yaml
-          printf 'humidity_sensor_ota_password: "%s"\n' "$(tr -dc A-Za-z0-9 </dev/urandom | head -c 32 ; echo '')" >> esphome/secrets.yaml
-          printf 'pressure_sensor_ota_password: "%s"\n' "$(tr -dc A-Za-z0-9 </dev/urandom | head -c 32 ; echo '')" >> esphome/secrets.yaml
-          echo 'cloudfree_smart_plug_v2_1_api_encryption_key: "NKnCdo4g9aBF30g1S1e7Gkcm0d+3OK7zik/Ni2VPFyk="' >> esphome/secrets.yaml
-          echo 'cloudfree_smart_plug_v2_2_api_encryption_key: "wVBxAjQUPseCDpJ02yWEx0It+mik1YLOR2juooJ9520="' >> esphome/secrets.yaml
-          echo 'environment_sensor_api_encryption_key: "Ekp5fU6okwQ3a6quNSWYTQY1u3azE11vd3r0rTrj6s0="' >> esphome/secrets.yaml
-          echo 'funhouse_api_encryption_key: "E7EH9iIVNpRMaYF6VpZ4RjcqnQuECAacDPROQrKevyU="' >> esphome/secrets.yaml
-          echo 'humidity_sensor_api_encryption_key: "x6KOGUkwi1R8raTu8dtPAawdK+rOxlIMQOZG1PO9OFE="' >> esphome/secrets.yaml
-          echo 'pressure_sensor_api_encryption_key: "itzs4DA2XGkjAY0Dejiue5igdqOSg7k+aUs4Xsr6M1s="' >> esphome/secrets.yaml
+          printf 'esp32_s3_box_3_01_wifi_ap_password: "%s"\n' "$(tr -dc A-Za-z0-9 </dev/urandom | head -c 32 ; echo '')" >> esphome/secrets.yaml
+          printf 'esp32_s3_box_3_01_ota_password: "%s"\n' "$(tr -dc A-Za-z0-9 </dev/urandom | head -c 32 ; echo '')" >> esphome/secrets.yaml
+          echo 'esp32_s3_box_3_01_encryption_key: "NKnCdo4g9aBF30g1S1e7Gkcm0d+3OK7zik/Ni2VPFyk="' >> esphome/secrets.yaml
       - uses: esphome/build-action@v1
         id: esphome-build
         with:
