@@ -1,5 +1,6 @@
 substitutions:
-  name: esp32-s3-box-3
+  name: esp32-s3-box-3-01
+  static_ip: 10.3.0.80
   friendly_name: ESP32 S3 Box 3
   loading_illustration_file: https://github.com/esphome/firmware/raw/main/voice-assistant/casita/loading_320_240.png
   idle_illustration_file: https://github.com/esphome/firmware/raw/main/voice-assistant/casita/idle_320_240.png
@@ -24,6 +25,9 @@ substitutions:
   voice_assist_muted_phase_id: "12"
 
   micro_wake_word_model: okay_nabu
+
+packages:
+  static-network: !include common/static_network.yaml
 
 esphome:
   name: ${name}
