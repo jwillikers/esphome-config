@@ -1,0 +1,28 @@
+substitutions:
+  name: esp32-s3-box-3-01
+  static_ip: 10.3.0.80
+  friendly_name: ESP32 S3 Box 3 01
+
+packages:
+  static-network: !include common/static_network.yaml
+  remote_package:
+    url: https://github.com/esphome/firmware
+    ref: main
+    files: [wake-word-voice-assistant/esp32-s3-box-3.yaml]
+    refresh: 1d
+
+api:
+  encryption:
+    key: !secret esp32_s3_box_3_01_api_encryption_key
+
+ota:
+  password: !secret esp32_s3_box_3_01_ota_password
+
+wifi:
+  enable_btm: true
+  enable_rrm: true
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  ap:
+    ssid: "${node_name} Fallback Hotspot"
+    password: !secret esp32_s3_box_3_01_wifi_ap_password

@@ -22,9 +22,16 @@ My {ESPHome} configuration for all my ESPHome devices.
 
 . Clone the repository.
 +
-[source,sh]
+[,sh]
 ----
 git clone git@github.com:jwillikers/esphome-config.git
+----
+
+. Change to the repository's directory.
++
+[,sh]
+----
+cd esphome-config
 ----
 
 . Copy the `secrets.yaml.template` template to `secrets.yaml` in the ESPHome configuration directory.
@@ -34,17 +41,24 @@ git clone git@github.com:jwillikers/esphome-config.git
 cp esphome/secrets.yaml.template esphome/secrets.yaml
 ----
 
+. Ensure that only the owner can read and write the sensitive `secrets.yaml` file.
++
+[,sh]
+----
+chmod 0600 esphome/secrets.yaml
+----
+
 . Add your WiFi SSID and password to the `secrets.yaml` file.
 In addition to these, each device should have it's own password for OTA updates and the fallback WiFi hotspot.
 Each device also requires a pre-shared encryption key for communicating securely with the Home Assistant API.
 See the https://esphome.io/components/api.html#configuration-variables[Native API - for each device Configuration Variables] section of the ESPHome documentation for details.
 Home Assistant will prompt you for the device's key once the device has been updated.
 
-. Copy the contents of the `esphome` directory to your ESPHome configuration directory.
-+
-[source,sh]
+The API encryption keys must be 32-bit base64 encoded strings, which can be generated with this OpenSSL command.
+
+[,sh]
 ----
-cp -r esphome-config/esphome/* ~/.local/share/containers/storage/volumes/esphome-config/_data/
+openssl rand -base64 32
 ----
 
 == Contributing
