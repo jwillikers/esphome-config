@@ -4,8 +4,9 @@ substitutions:
   friendly_name: ESP32 S3 Box 3 01
 
 packages:
-  static-network: !include common/static_network.yaml
-  remote_package:
+  static-network: !include
+    file: common/static_network.yaml
+  device_base:
     url: https://github.com/esphome/firmware
     ref: main
     files: [wake-word-voice-assistant/esp32-s3-box-3.yaml]
