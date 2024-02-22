@@ -1,5 +1,6 @@
 .cache/
 .platformio/
+.esphome/
 
 secrets.yaml
 secrets.yml
