@@ -10,7 +10,7 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: yaml-lint
         uses: ibiqlik/action-yamllint@v3
 
@@ -27,7 +27,7 @@ jobs:
         node:
           - esp32-s3-box-3-01
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - run: |
           touch esphome/secrets.yaml
           echo 'wifi_ssid: "Test WiFi SSID"' >> esphome/secrets.yaml
