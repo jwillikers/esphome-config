@@ -1,2 +1,5 @@
+.cache/
+.platformio/
+
 secrets.yaml
 secrets.yml
