@@ -25,5 +25,5 @@ wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
   ap:
-    ssid: "${node_name} Fallback Hotspot"
+    ssid: "${name} Fallback Hotspot"
     password: !secret esp32_s3_box_3_01_wifi_ap_password
