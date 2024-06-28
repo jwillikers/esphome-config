@@ -17,6 +17,7 @@ api:
     key: !secret esp32_s3_box_3_01_api_encryption_key
 
 ota:
+  platform: esphome
   password: !secret esp32_s3_box_3_01_ota_password
 
 wifi:
