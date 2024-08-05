@@ -38,4 +38,4 @@ jobs:
       - uses: esphome/build-action@v4
         id: esphome-build
         with:
-          yaml_file: esphome/${{ matrix.node }}.yaml
+          yaml-file: esphome/${{ matrix.node }}.yaml
