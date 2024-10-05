@@ -1,23 +1,23 @@
-name: CI
-on:  # yamllint disable-line rule:truthy
+name: Build
+"on":
   pull_request:
+    paths:
+      - .github/workflows/build.yaml
+      - esphome/**.yaml
+      - esphome/**.yml
   push:
     branches:
       - main
+    paths:
+      - .github/workflows/build.yaml
+      - esphome/**.yaml
+      - esphome/**.yml
+  workflow_dispatch:
 
 jobs:
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: yaml-lint
-        uses: ibiqlik/action-yamllint@v3
-
   build:
     name: Build
     runs-on: ubuntu-latest
-    needs: lint
     strategy:
       matrix:
         # todo Build using aarch64 when supported in ESP-IDF.
