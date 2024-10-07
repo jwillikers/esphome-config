@@ -1,5 +1,6 @@
 {
     "recommendations": [
-        "esphome.esphome-vscode"
+        "esphome.esphome-vscode",
+        "chrislajoie.vscode-modelines"
     ]
 }
