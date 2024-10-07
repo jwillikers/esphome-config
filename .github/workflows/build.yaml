@@ -5,6 +5,7 @@ name: Build
       - .github/workflows/build.yaml
       - esphome/**.yaml
       - esphome/**.yml
+      - esphome/secrets.yaml.template
   push:
     branches:
       - main
@@ -12,6 +13,7 @@ name: Build
       - .github/workflows/build.yaml
       - esphome/**.yaml
       - esphome/**.yml
+      - esphome/secrets.yaml.template
   workflow_dispatch:
 
 jobs:
