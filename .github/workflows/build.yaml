@@ -37,7 +37,7 @@ jobs:
           printf 'esp32_s3_box_3_01_wifi_ap_password: "%s"\n' "$(tr -dc A-Za-z0-9 </dev/urandom | head -c 32 ; echo '')" >> esphome/secrets.yaml
           printf 'esp32_s3_box_3_01_ota_esphome_password: "%s"\n' "$(tr -dc A-Za-z0-9 </dev/urandom | head -c 32 ; echo '')" >> esphome/secrets.yaml
           echo 'esp32_s3_box_3_01_api_encryption_key: "NKnCdo4g9aBF30g1S1e7Gkcm0d+3OK7zik/Ni2VPFyk="' >> esphome/secrets.yaml
-      - uses: esphome/build-action@v4
+      - uses: esphome/build-action@v6
         id: esphome-build
         with:
           yaml-file: esphome/${{ matrix.node }}.yaml
