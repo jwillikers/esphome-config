@@ -54,11 +54,25 @@ Each device also requires a pre-shared encryption key for communicating securely
 See the https://esphome.io/components/api.html#configuration-variables[Native API - for each device Configuration Variables] section of the ESPHome documentation for details.
 Home Assistant will prompt you for the device's key once the device has been updated.
 
+The OTA and WiFi hotspot passwords can be generated with this command.
+
+[,sh]
+----
+tr --complement --delete '[:alnum:]' < /dev/urandom | fold --width=32 | head --lines=1
+----
+
 The API encryption keys must be 32-bit base64 encoded strings, which can be generated with this OpenSSL command.
 
 [,sh]
 ----
 openssl rand -base64 32
+----
+
+If you don't have or want to install OpenSSL, the following command will also work.
+
+[,sh]
+----
+tr --complement --delete '[:alnum:]' < /dev/urandom | fold --width=32 | head --bytes=32 | base64
 ----
 
 == Contributing
@@ -83,7 +97,7 @@ Refer to the project's link:CODE_OF_CONDUCT.adoc[Code of Conduct] for details.
 
 This repository is licensed under the https://www.gnu.org/licenses/gpl-3.0.html[GPLv3], a copy of which is provided in the link:LICENSE.adoc[license file].
 
-© 2022-2024 Jordan Williams
+© 2022-2025 Jordan Williams
 
 == Authors
 
