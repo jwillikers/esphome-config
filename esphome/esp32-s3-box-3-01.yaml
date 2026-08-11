@@ -7,9 +7,9 @@ packages:
   static-network: !include
     file: common/static_network.yaml
   device_base:
-    url: https://github.com/esphome/firmware
+    url: https://github.com/esphome/wake-word-voice-assistants
     ref: main
-    files: [wake-word-voice-assistant/esp32-s3-box-3.yaml]
+    files: [esp32-s3-box-3/esp32-s3-box-3.yaml]
     refresh: 1d
 
 api:
