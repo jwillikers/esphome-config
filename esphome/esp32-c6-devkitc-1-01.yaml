@@ -1,0 +1,57 @@
+# Board: ESP32-C6 DevKitC-1 (Espressif)
+# Definition: definitions/boards/esp32-c6-devkitc-1/manifest.yaml
+#
+# Used as a BLE proxy for the Radon Eye RD200 BLE device.
+substitutions:
+  name: esp32-c6-devkitc-1-01
+  static_ip: 10.3.0.81
+  friendly_name: ESP32-C6 DevKitC 1 01
+
+esphome:
+  name: esp32-c6-devkitc-1-01
+  friendly_name: esp32-c6-devkitc-1-01
+
+packages:
+  static-network: !include
+    file: common/static_network.yaml
+
+esp32:
+  variant: esp32c6
+  flash_size: 4MB
+  framework:
+    type: esp-idf
+
+logger:
+#  level: DEBUG # Required for the tracker to show the device when locating the Bluetooth MAC address.
+
+api:
+  encryption:
+    key: "C92Zo00iTFBgysbNSn61L1sUjyRZpIsJV3qrEEd9JrU="
+
+ota:
+  - platform: esphome
+    password: !secret esp32_c6_devkitc_1_01_ota_esphome_password
+
+wifi:
+  enable_btm: true
+  enable_rrm: true
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  ap:
+    ssid: esp32-c6-devkit Fallback Hotspot
+    password: !secret esp32_c6_devkitc_1_01_wifi_ap_password
+
+esp32_ble_tracker:
+
+ble_client:
+  - mac_address: 8C:4B:14:A0:AE:6A
+    id: radon_eye_ble_id
+
+sensor:
+  - platform: radon_eye_rd200
+    ble_client_id: radon_eye_ble_id
+    update_interval: 5min # default
+    radon:
+      name: "Radon"
+    radon_long_term:
+      name: "Radon Long Term"
