@@ -1,0 +1,29 @@
+substitutions:
+  name: radon-eye-rd200-01
+  friendly_name: Radon Eye RD200 01
+
+# BLE Discovery
+
+logger:
+  level: DEBUG # Required for the tracker to show the device
+
+esp32_ble_tracker:
+radon_eye_ble:
+
+# Device configuration after discovery of MAC address
+
+# esp32_ble_tracker:
+
+# ble_client:
+#   - mac_address: XX:XX:XX:XX:XX:XX
+#     id: radon_eye_ble_id
+
+# sensor:
+#   - platform: radon_eye_rd200
+#     ble_client_id: radon_eye_ble_id
+#     # update_interval: 5min # default
+#     update_interval: 15min
+#     radon:
+#       name: "Radon"
+#     radon_long_term:
+#       name: "Radon Long Term"
