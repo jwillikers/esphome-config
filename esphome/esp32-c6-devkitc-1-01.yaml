@@ -9,7 +9,7 @@ substitutions:
 
 esphome:
   name: esp32-c6-devkitc-1-01
-  friendly_name: esp32-c6-devkitc-1-01
+  friendly_name: $friendly_name
 
 packages:
   static-network: !include
