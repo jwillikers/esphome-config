@@ -1,11 +1,6 @@
 name: Build
 "on":
   pull_request:
-    paths:
-      - .github/workflows/build.yaml
-      - esphome/**.yaml
-      - esphome/**.yml
-      - esphome/secrets.yaml.template
   push:
     branches:
       - main
@@ -15,6 +10,10 @@ name: Build
       - esphome/**.yml
       - esphome/secrets.yaml.template
   workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
 
 jobs:
   build:
@@ -29,8 +28,25 @@ jobs:
         node:
           - esp32-s3-box-3-01
     steps:
-      - uses: actions/checkout@v5
-      - run: |
+      # Always run this job so that required status checks report on every PR,
+      # but only do the work when relevant files changed.
+      - uses: dorny/paths-filter@v4
+        id: filter
+        if: github.event_name == 'pull_request'
+        with:
+          filters: |
+            relevant:
+              - .github/workflows/build.yaml
+              - esphome/**.yaml
+              - esphome/**.yml
+              - esphome/secrets.yaml.template
+      - name: Determine whether to run
+        id: gate
+        run: echo "run=${{ github.event_name != 'pull_request' || steps.filter.outputs.relevant == 'true' }}" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v7
+        if: steps.gate.outputs.run == 'true'
+      - if: steps.gate.outputs.run == 'true'
+        run: |
           touch esphome/secrets.yaml
           echo 'wifi_ssid: "Test WiFi SSID"' >> esphome/secrets.yaml
           echo 'wifi_password: "Test WiFi Password"' >> esphome/secrets.yaml
@@ -38,6 +54,7 @@ jobs:
           printf 'esp32_s3_box_3_01_ota_esphome_password: "%s"\n' "$(tr -dc A-Za-z0-9 </dev/urandom | head -c 32 ; echo '')" >> esphome/secrets.yaml
           echo 'esp32_s3_box_3_01_api_encryption_key: "NKnCdo4g9aBF30g1S1e7Gkcm0d+3OK7zik/Ni2VPFyk="' >> esphome/secrets.yaml
       - uses: esphome/build-action@v7
+        if: steps.gate.outputs.run == 'true'
         id: esphome-build
         with:
           yaml-file: esphome/${{ matrix.node }}.yaml
