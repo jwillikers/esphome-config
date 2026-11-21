@@ -50,7 +50,7 @@ ble_client:
 sensor:
   - platform: radon_eye_rd200
     ble_client_id: radon_eye_ble_id
-    update_interval: 5min # default
+    update_interval: 5min  # default
     radon:
       name: "Radon"
     radon_long_term:
